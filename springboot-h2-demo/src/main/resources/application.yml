@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true # http://localhost:8080/rasp-test-mybatis-plus/h2-console
+  sql:
+    init:
+#      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+      username: sa
+      password: password
+      mode: embedded
+
+server:
+  servlet:
+    context-path: /rasp-test-mybatis-plus
+
+mybatis-plus:
+  mapper-locations: classpath*:mappers/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #本地开启sql日志，生产禁止开启
